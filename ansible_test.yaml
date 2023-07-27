@@ -5,8 +5,13 @@
   tasks : 
   - name: updating apt
     command : sudo apt install openjdk-11-jdk
+    
+    - name: Copy JAR file
+      copy:
+        src: com.selenium.jar
+        dest: /home/ubuntu/com.selenium.jar 
 
   - name : run-java-file
-    command : sudo java -jar com.selenium.jar
+    command : sudo java -jar /home/ubuntu/com.selenium.jar
     become : yes
     become_user : root
