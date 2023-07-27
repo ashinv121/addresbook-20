@@ -1,0 +1,12 @@
+- name : Configure Docker on EC2 Instances
+  hosts : seleniumServer
+  become: true
+  connection : ssh
+  tasks : 
+  - name: updating apt
+    command : sudo apt install openjdk-11-jdk
+
+  - name : run-java-file
+    command : sudo java -jar com.selenium.jar
+    become : yes
+    become_user : root
