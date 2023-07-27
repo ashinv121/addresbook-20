@@ -6,8 +6,8 @@
   - name: updating apt
     command : sudo apt install openjdk-11-jdk
     
-    - name: Copy JAR file
-      copy:
+  - name: Copy JAR file
+    copy:
         src: com.selenium.jar
         dest: /home/ubuntu/com.selenium.jar 
 
