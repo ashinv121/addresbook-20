@@ -14,12 +14,6 @@
   - name : run-java-file
     command : sudo java -jar /home/ubuntu/com.selenium.jar
 
-  - name: Get Docker Container IDs
-    command: "sudo docker ps -aq"
-    register: docker_container_ids
-
-  - name: Stop Docker Containers
-    shell: "sudo docker stop {{ docker_container_ids.stdout }}"
 
  
 
