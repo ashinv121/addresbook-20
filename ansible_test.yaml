@@ -15,7 +15,7 @@
     command : sudo java -jar /home/ubuntu/com.selenium.jar
 
   - name : stop docker container
-    shell : "sudo docker stop $(sudo docker ps -aq)"
+    shell : shell: "/usr/bin/docker stop $(sudo /usr/bin/docker ps -aq)" #"sudo docker stop $(sudo docker ps -aq)"
 
   - name : remove docker container
     shell : "sudo docker rm $(sudo docker ps -aq)"
