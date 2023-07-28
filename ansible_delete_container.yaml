@@ -3,10 +3,11 @@
   become: true
   connection : ssh
   tasks : 
-    - name : stop docker container
-      command : "sudo docker --version"
+    - name: Get Docker Container IDs
+      command: "sudo docker ps -aq"
+      register: docker_container_ids
 
-    - name : remove docker container
-      shell : "sudo docker rm $(sudo docker ps -q)"
-    - name : remove docker container
-      shell : "sudo docker rmi shubhamkushwah123/insure-me:3.0"
+    - name: Stop Docker Containers
+      shell: "sudo docker stop {{ docker_container_ids.stdout }}"
+
+   
