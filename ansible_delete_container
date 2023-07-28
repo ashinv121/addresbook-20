@@ -1,0 +1,12 @@
+- name : Configure Docker on EC2 Instances
+  hosts : master
+  become: true
+  connection : ssh
+  tasks : 
+    - name : stop docker container
+      command : sudo docker stop $(sudo docker ps -aq)
+
+    - name : remove docker container
+      command : sudo docker rm $(sudo docker ps -aq)
+    - name : remove docker container
+      command : sudo docker rmi shubhamkushwah123/insure-me:3.0
