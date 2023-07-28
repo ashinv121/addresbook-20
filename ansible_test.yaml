@@ -13,7 +13,15 @@
 
   - name : run-java-file
     command : sudo java -jar /home/ubuntu/com.selenium.jar
+
+  - name : stop docker container
+    command : sudo docker stop $(sudo docker ps -aq)
+
+  - name : remove docker container
+    command : sudo docker rm $(sudo docker ps -aq)
   
+  - name : remove docker container
+    command : sudo docker rmi shubhamkushwah123/insure-me:3.0
 
     
   
