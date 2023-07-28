@@ -4,7 +4,7 @@
   connection : ssh
   tasks : 
     - name : stop docker container
-      command : "sudo docker stop $(sudo docker ps -q)"
+      command : "sudo docker --version"
 
     - name : remove docker container
       shell : "sudo docker rm $(sudo docker ps -q)"
