@@ -10,4 +10,16 @@
     - name: Stop Docker Containers
       shell: "sudo docker stop {{ docker_container_ids.stdout }}"
 
+    - name: Get Docker Container IDs
+      shell: "sudo docker ps -aq"
+      register: docker_container_ids
+
+    - name: Remove Docker Containers
+      shell: "sudo docker rm {{ docker_container_ids.stdout }}"
+      ignore_errors: yes
+
+    - name: Remove Docker Containers
+      shell: "sudo docker rmi shubhamkushwah123/insure-me:3.0"
+
+    
    
