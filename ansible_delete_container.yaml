@@ -4,9 +4,9 @@
   connection : ssh
   tasks : 
     - name : stop docker container
-      command : sudo docker stop $(sudo docker ps -q)
+      command : "sudo docker stop $(sudo docker ps -q)"
 
     - name : remove docker container
-      command : sudo docker rm $(sudo docker ps -q)
+      shell : "sudo docker rm $(sudo docker ps -q)"
     - name : remove docker container
-      command : sudo docker rmi shubhamkushwah123/insure-me:3.0
+      shell : "sudo docker rmi shubhamkushwah123/insure-me:3.0"
