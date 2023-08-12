@@ -44,7 +44,7 @@
       name: zip 
       state: present
 
-  -name: unzip chromedriver
+  - name: unzip chromedriver
    shell: "unzip chromedriver-linux64.zip"
 
 
