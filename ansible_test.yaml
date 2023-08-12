@@ -45,6 +45,7 @@
       state: present
 
   - name: unzip chromedriver
+    become: yes
     shell: "unzip chromedriver-linux64.zip"
 
   - name: Move ChromeDriver to /usr/bin
