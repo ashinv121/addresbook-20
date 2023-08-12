@@ -47,6 +47,18 @@
   - name: unzip chromedriver
     shell: "unzip chromedriver-linux64.zip"
 
+  - name: Move ChromeDriver to /usr/bin
+    become: yes
+    command: "mv chromedriver-linux64/chromedriver /usr/bin/chromedriver"
+      
+  - name: Change ownership to root
+    become: yes
+    file:
+        path: /usr/bin/chromedriver
+        owner: root
+        group: root
+        mode: '0755'
+
 
 #  - name: Copy JAR file
 #    copy:
