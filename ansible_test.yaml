@@ -2,38 +2,39 @@
   hosts : selenium-test-machine
   become: true
   connection : ssh
-  tasks :
-    - name: Update APT cache
+  tasks : 
+  - name: updating apt
+    command : sudo apt install openjdk-11-jdk
+    
+  - name: Install Google Chrome repository signing key
+    apt_key:
+      url: https://dl.google.com/linux/linux_signing_key.pub
+      state: present
+
+  - name: Add Google Chrome APT repository
+    apt_repository:
+      repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+      state: present
+
+  - name: Update APT cache
     apt:
         update_cache: yes
-    - name: updating apt
-      command : sudo apt install openjdk-11-jdk
-    
-    - name: Install Google Chrome repository signing key
-      apt_key:
-        url: https://dl.google.com/linux/linux_signing_key.pub
-        state: present
 
-    - name: Add Google Chrome APT repository
-      apt_repository:
-        repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
-        state: present
-
-    - name: Update APT cache
-      apt:
-          update_cache: yes
-
-    - name: Install Google Chrome
-      apt:
-        name: google-chrome-stable
-        state: present
+  - name: Install Google Chrome
+    apt:
+      name: google-chrome-stable
+      state: present
     
 #  - name: Copy JAR file
 #    copy:
         #src: com.selenium.jar
         #dest: /home/ubuntu/com.selenium.jar 
 
-#  - name: run-java-file
-#    command: sudo java -jar /home/ubuntu/com.selenium.jar
+  #- name : run-java-file
+  #  command : sudo java -jar /home/ubuntu/com.selenium.jar
 
 
+ 
+
+    
+  
