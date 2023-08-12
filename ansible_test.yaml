@@ -33,11 +33,11 @@
     apt:
       name: google-chrome-stable
       state: present
-
+      
   - name: get google chrome driver
-    url: https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.170/linux64/chromedriver-linux64.zip
-    state: present
-
+    command: wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.170/linux64/chromedriver-linux64.zip
+    
+    
   - name: install zip tool
     become: yes
     apt: 
