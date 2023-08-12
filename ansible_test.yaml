@@ -45,7 +45,7 @@
       state: present
 
   -name: unzip chromedriver
-   command: unzip chromedriver-linux64.zip
+   shell: "unzip chromedriver-linux64.zip"
 
 
 #  - name: Copy JAR file
