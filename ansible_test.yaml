@@ -59,6 +59,18 @@
         owner: root
         group: root
         mode: '0755'
+        
+  - name: Remove downloaded zip file
+    become: yes
+    file:
+        path: chromedriver-linux64.zip
+        state: absent
+        
+  - name: Remove temporary unzipped folder
+    become: yes
+    file:
+        path: chromedriver-linux64
+        state: absent
 
 
 #  - name: Copy JAR file
