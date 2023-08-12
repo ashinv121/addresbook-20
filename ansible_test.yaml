@@ -3,7 +3,12 @@
   become: true
   connection : ssh
   tasks : 
-  - name: updating apt
+  
+  - name: Update APT cache
+    apt:
+        update_cache: yes
+
+  - name: install java jdk 11
     command : sudo apt install openjdk-11-jdk
     
   - name: Install Google Chrome repository signing key
