@@ -73,13 +73,13 @@
         state: absent
 
 
-#  - name: Copy JAR file
-#    copy:
-        #src: com.selenium.jar
-        #dest: /home/ubuntu/com.selenium.jar 
+  - name: Copy JAR file
+    copy:
+        src: com.web-testing.jar
+        dest: /home/ubuntu/com.web-testing.jar
 
-  #- name : run-java-file
-  #  command : sudo java -jar /home/ubuntu/com.selenium.jar
+  - name : run-java-file
+    command : sudo java -jar /home/ubuntu/com.web-testing.jar
 
 
  
