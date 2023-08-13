@@ -19,7 +19,7 @@
       ignore_errors: yes
 
     - name: Remove Docker Containers
-      shell: "sudo docker rmi shubhamkushwah123/insure-me:3.0"
+      shell: "sudo docker rmi ashinv121/addressbook:1.0"
 
     
    
