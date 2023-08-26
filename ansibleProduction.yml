@@ -18,22 +18,27 @@
 
   - name: Check if container is running
     shell: docker inspect -f '{{.State.Running}}' insure-prod
+    become : yes
     ignore_errors: true
     register: container_status
 
   - name: Stop and remove container if running
     command: docker stop insure-prod
+    become : yes
     when: container_status.stdout == "true"
 
   - name: Stop and remove container if running
     command: docker rm -f insure-prod
+    become : yes
     when: container_status.stdout == "true"
   
   - name: Remove old image
     command: docker rmi ashinv121/addressbook:1.0
+    become : yes
     ignore_errors: true
     when: container_status.stdout == "true"
 
   - name: Deploy Docker Container
+    become : yes
     command: docker run -itd -p 8080:8080 --name insure-prod ashinv121/addressbook:1.0
    
