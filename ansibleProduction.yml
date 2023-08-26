@@ -16,27 +16,14 @@
     become : yes
     become_user : root
 
-  - name: Check if container is running
-    shell: docker inspect -f '{{.State.Running}}' insure-prod
-    become : yes
-    ignore_errors: true
-    register: container_status
+  - name: Check if container exists
+    shell: sudo docker ps -f "name=insure-prod" -aq
+    register: container_ids
 
-  - name: Stop and remove container if running
-    command: docker stop insure-prod
-    become : yes
-    when: container_status.stdout == "true"
-
-  - name: Stop and remove container if running
-    command: docker rm -f insure-prod
-    become : yes
-    when: container_status.stdout == "true"
-  
-  - name: Remove old image
-    command: docker rmi ashinv121/addressbook:1.0
-    become : yes
-    ignore_errors: true
-    when: container_status.stdout == "true"
+  - name: Stop and remove container if it exists
+    shell: sudo docker stop {{ item }} && sudo docker rm {{ item }}
+    with_items: "{{ container_ids.stdout_lines }}"
+    when: container_ids.stdout_lines | length > 0
 
   - name: Deploy Docker Container
     become : yes
